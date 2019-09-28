@@ -94,5 +94,54 @@ asyncWork()
 
 <b>Main Queue</b> - Using to update the UI after completing work in a task on a concurrent queue.
 
-List of DispatchQueue Priority
+List of DispatchQueue [Priority](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/PrioritizeWorkWithQoS.html)
+
+```
+.userInteractive
+.userInitiated
+.default
+.utility
+.background
+.unspecified
+```
+
+Perform <b>background</b> Quality of Service <b>(QOS)</b> task
+
+```
+DispatchQueue.global(qos: .background).async { 
+    // Call your background task
+    DispatchQueue.main.async { 
+       // UI Updates here for task complete.
+    }
+}
+```
+
+### DispatchQueue with delay ⏳
+
+```
+let deadlineTime = DispatchTime.now() + .seconds(1)
+DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+    //Perform code here
+}
+```
+
+### Dispatch Groups 👨‍👨‍👦‍👦
+
+```
+let dispatchGroup = DispatchGroup()
+
+dispatchGroup.enter()
+loadUseractivities { dispatchGroup.leave() }
+
+dispatchGroup.enter()
+loaduserComments { dispatchGroup.leave() }
+
+dispatchGroup.notify(queue: .main) {
+    print("all activities complete 👍")
+}
+```
+
+## Conclusion
+
+Finally we can say Grand central dispatch is the powerful api for multitasking with sync and async programming in iOS.😊 🎉
 
