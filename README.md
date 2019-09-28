@@ -13,3 +13,12 @@ DispatchQueue.main.async {
      // Perform your async code here
 }
 ```
+
+### DispatchQueue
+
+The DispatchQueue API like a company 🏢. Who having staff units like junior level and senior level workers 👷🏼‍. So now the company can take both heavy and light work with there team.
+
+```
+One more important thing here its manage task in FIFO Order.
+```
+
